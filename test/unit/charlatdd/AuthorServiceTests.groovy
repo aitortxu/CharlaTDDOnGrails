@@ -1,9 +1,10 @@
 package charlatdd
 
+import static org.gmock.GMock.match
+import static org.hamcrest.CoreMatchers.any
 import org.junit.Before
 import org.gmock.GMockController
 import org.junit.Test
-import static org.gmock.GMock.match
 
 class AuthorServiceTests {
     def gmc
@@ -39,6 +40,14 @@ class AuthorServiceTests {
         gmc.mock(author).save(match { it.flush && it.failOnError })
         gmc.play {
             service.persist(author)
+        }
+    }
+
+    @Test
+    void "devuelve un Author por su slug"() {
+        mockedAuthor.static.findBySlug(any(String)).returns({})
+        gmc.play {
+            service.getOneBySlug('cocotero')
         }
     }
 }

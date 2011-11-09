@@ -5,7 +5,7 @@ import org.gmock.GMockController
 
 class BookControllerTests extends ControllerUnitTestCase {
     def gmc
-    def authors
+    def authors, charlesDickens, miguelDeCervantes
 
     BookControllerTests() {
         super(BookController)
@@ -37,8 +37,10 @@ class BookControllerTests extends ControllerUnitTestCase {
     }
 
     private def createAuthors() {
+        charlesDickens = new Author(name: 'Charles Dickens', birthYear: 1812)
+        miguelDeCervantes = new Author(name: 'Miguel de Cervantes', birthYear: 1547)
         authors = new AuthorCollection()
-        authors << new Author(name: 'Charles Dickens', birthYear: 1812)
-        authors << new Author(name: 'Miguel de Cervantes', birthYear: 1547)
+        authors << charlesDickens
+        authors << miguelDeCervantes
     }
 }

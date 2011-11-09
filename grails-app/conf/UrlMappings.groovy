@@ -1,7 +1,7 @@
 class UrlMappings {
 
     static mappings = {
-        "/bibliografia/$author"(controller: "book", action: "listByAuthor")
+        "/books/by/$authorSlug"(controller: "book", action: "listByAuthorSlug")
 
         "/$controller/$action?/$id?" { constraints { }}
         "/"(view: "/index")

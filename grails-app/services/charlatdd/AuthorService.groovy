@@ -17,4 +17,8 @@ class AuthorService {
     def persist(author) {
         author.save(flush: true, failOnError: true)
     }
+
+    def getOneBySlug(slug) {
+        Author.findBySlug(slug)
+    }
 }

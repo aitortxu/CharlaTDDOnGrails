@@ -22,7 +22,8 @@ class BookController {
     }
 
     def listByAuthorSlug = {
-        return rende([cucu: 'lala'] as JSON)
+        def author = authorService.getOneBySlug(params.authorSlug)
+        return render(view: 'list', model: [books: author.books, total: author.books.size(), author: author])
     }
 
     def create = {

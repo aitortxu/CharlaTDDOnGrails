@@ -8,7 +8,7 @@
 
 <body>
 <div class="page-header">
-    <h1>Listado de Libros</h1>
+    <h1>Listado de Libros <g:if test="${author}"><small>Autor: ${author.name}&nbsp;<a href="<g:createLink action="list"/>">reset</a></small></g:if></h1>
 </div>
 
 <g:if test="${flash.message}">
@@ -23,6 +23,7 @@
     </div>
 
     <div class="span13">
+
         <p>Total: ${total}</p>
         <table class="list zebra-striped">
             <thead>
@@ -37,7 +38,11 @@
                 <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                     <td>${book.id}</td>
                     <td>${book.title}</td>
-                    <td><g:each in="${book.authors}" var="author">${author.centuryAndName}&nbsp;</g:each></td>
+                    <td>
+                        <g:each in="${book.authors}" var="author">
+                            <a href="<g:createLink action="listByAuthorSlug"  params="['authorSlug': author.slug]"/>">${author.centuryAndName}</a>&nbsp;
+                        </g:each>
+                    </td>
                 </tr>
             </g:each>
             </tbody>
