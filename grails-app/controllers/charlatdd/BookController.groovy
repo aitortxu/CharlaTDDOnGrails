@@ -21,6 +21,10 @@ class BookController {
         }
     }
 
+    def listByAuthorSlug = {
+        return rende([cucu: 'lala'] as JSON)
+    }
+
     def create = {
         def book = new Book()
         book.properties = params

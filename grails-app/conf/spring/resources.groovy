@@ -1,4 +1,2 @@
-import charlatdd.BookService
-
 beans = {
 }
